@@ -1,0 +1,36 @@
+<!--导航-->
+<div class="nav">
+    <ul class="clearfix">
+        <img src="__INDEX__/images/logo.png"/>
+        {volist name="cate" id="vo"}
+        <li {eq name="currtype" value="0"}class="current"{/eq}><a href="{$vo.type|makeurl=###,$vo.id}">{$vo.name}</a></li>
+
+        {/volist}
+    </ul>
+</div>
+<!--banner-->
+
+<div id="slideBox" class="slideBox">
+    <!--<div class="hd">
+        <ul><li>1</li><li>2</li><li>3</li></ul>
+    </div>-->
+
+    <div class="bd">
+
+        <ul>
+            {volist name="banner" id="vo"}
+            <li><a href="{$vo.url}" target="_blank"><img src="__UPLOADS__/{$vo.pic}" /></a></li>
+            {/volist}
+        </ul>
+
+    </div>
+
+    <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+    <a class="prev" href="javascript:void(0)"></a>
+    <a class="next" href="javascript:void(0)"></a>
+
+</div>
+
+<script type="text/javascript">
+    jQuery(".slideBox").slide({mainCell:".bd ul",effect:"fold",autoPlay:true});
+</script>

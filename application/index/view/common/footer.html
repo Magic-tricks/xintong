@@ -1,0 +1,14 @@
+<!--底部-->
+<div class="foot-bj"></div>
+<div class="footer">
+    <ul>
+        <li><img src="__INDEX__/images/{$logoPic.logo}"/></li>
+
+        <li {eq name="currtype" value="0"}class="current"{/eq}>
+            {volist name="cate" id="vo"}
+        <a href="{$vo.type|makeurl=###,$vo.id}">{$vo.name}</a>
+
+        {/volist}
+        </li>
+    </ul>
+</div>

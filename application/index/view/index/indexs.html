@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>孔子文创</title>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/style.css"/>
+		<!--<script src="./js/jquery.js"></script>-->
+		<script type="text/javascript" src="__INDEX__/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="__INDEX__/js/jquery.SuperSlide.2.1.1.js"></script>
+	</head>
+	<body>
+		<!--导航-->
+		{include file="common/menu" /}
+		<!--模块1-->
+		<div class="mk1 clearfix">
+			<p class="tit1">PRODUCE   STROY</p>
+			<p class="tit2">产品<span class="bold">故事</span></p>
+			<dl class="flex mk1-imgs">
+				<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+				<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+				<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+				<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+				<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+			</dl>
+		</div>
+		<!--通栏banner-->
+		<div class="main-banner">
+			<a href="javascript:volid(0);"><img src="__INDEX__/images/banner1.jpg"/></a>
+		</div>
+
+		{volist name="cateResult" id="vo"}
+		<!--模块2-->
+		<div class="mk1 clearfix">
+			<p class="tit1">MEET THE CREATIVES</p>
+			<p class="tit2">{$vo.name}</p>
+			<dl class="flex mk2-imgs">
+			<?php $i=0; foreach($artAll as $key => $value):  if($value['cid'] == $vo['id']): $i++; if($i >3 ) break; ?>
+				<dd>
+					<a href="javascript:volid(0);" onmousedown="this.className'aaa'"><img src="__UPLOADS__/<?php echo $value['pic']?>"/></a>
+					<p class="mk2-con"><?php echo $value['title']?></p>
+					<p class="mk2-con2"><?php echo $value['desc']?></p>
+
+				</dd>
+			<?php   endif;  endforeach; ?>
+			</dl>
+		</div>
+		<!--通栏banner-->
+		<div class="main-banner">
+			<a href="javascript:volid(0);"><img src="__INDEX__/images/{if condition="$vo['id'] == '1' "}banner3.jpg {/if} {if condition="$vo['id'] == '2' "}banner1.jpg {/if} {if condition="$vo['id'] == '3' "}banner2.jpg {/if}" /></a>
+		</div>
+		<!--模块2-->
+		{/volist}
+		
+		<!--底部-->
+		{include file="common/footer" /}
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片</title>
+    <link rel="stylesheet" href="__ADMIN__/vendor/layui/css/layui.css">
+</head>
+<body style="padding:0 10px;">
+<table class="layui-table">
+    <colgroup>
+        <col width="60">
+        <col>
+        <col width="100">
+        <col width="60">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>缩略图</th>
+        <th>排序</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="pics" id="vo"}
+    <tr>
+        <td>{$vo.id}</td>
+        <td><img src="/{$vo.pic}" alt=""></td>
+        <td><input type="text" name="sort" value="{$vo.sort}" id="{$vo.id}" onchange="changesort(this)" required  lay-verify="required" class="layui-input"></td>
+        <td><a href="{:url('admin/erjineirong/delpic',['id'=>$vo.id])}" class="layui-btn layui-btn-mini layui-btn-danger">删除</a></td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+<script src="__ADMIN__/vendor/js/jquery.js"></script>
+<script src="__ADMIN__/vendor/layui/layui.js"></script>
+<script>
+    function changesort(obj) {
+        var id=$(obj).attr('id');
+        var sortval=$(obj).val( );
+        layui.use('layer',function () {
+            var layer = layui.layer;
+            $.ajax({
+                'type':'post',
+                'url':"{:url('admin/erjineirong/picsort')}",
+                'data':{'id':id,'sort':sortval},
+                success:function(msg){
+                    layer.msg(msg.msg,{time:1000},function () {
+                        if(msg.code==1){
+                            window.location.reload();
+                        }
+                    });
+                }
+            })
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>孔子文创</title>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/style.css"/>
+		
+		<script type="text/javascript" src="__INDEX__/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="__INDEX__/js/jquery.SuperSlide.2.1.1.js"></script>
+	</head>
+	<body>
+	{include file="common/menu" /}
+		<script type="text/javascript">
+		jQuery(".slideBox").slide({mainCell:".bd ul",effect:"fold",autoPlay:true});
+		</script>
+		<!--模块1-->
+		<div class="pro-mk1 clearfix">
+			
+			<dl class="flex">
+				<dd>
+					<a href="{:url('Show/index',['cid'=>2])}"><img src="__INDEX__/images/ico1.jpg"/></a>
+					<p class="product-con">旅游纪念品</p>
+					<p class="product-con2">MEET THE CREATIVES</p>
+				</dd>
+				<dd>
+					<a href="{:url('Wenju/index',['cid'=>3])}"><img src="__INDEX__/images/ico2.jpg"/></a>
+					<p class="product-con">文具</p>
+					<p class="product-con2">MEET THE CREATIVES</p>
+				</dd>
+				<dd>
+					<a href="{:url('Riyong/index',['cid'=>1])}"><img src="__INDEX__/images/ico3.jpg"/></a>
+					<p class="product-con">日用品</p>
+					<p class="product-con2">MEET THE CREATIVES</p>
+				</dd>
+			</dl>
+		</div>
+		
+		<!--模块2-->
+	<div class="mk1 clearfix">
+
+		<dl class="flex promk2-imgs">
+			{volist name="artRes" id="vo"}
+			<dd>
+				<a href="javascript:volid(0);"><img src="__UPLOADS__/{$vo.pic.pic}"/></a>
+				<p class="mk2-con">{$vo.title}</p>
+				<p class="mk2-con2">{$vo.desc}</p>
+			</dd>
+			{/volist}
+		</dl>
+	</div>
+		<!--查看更多-->
+		<a href="javascript:volid(0);" class="many" id="many">查看更多 >>></a>
+		<div class="mk1 clearfix" style="display: none;" id="many-div">
+			<dl class="flex promk2-imgs">
+				{volist name="artAllRes" id="vo"}
+				<dd>
+					<a href="javascript:volid(0);"><img src="__UPLOADS__/{$vo.pic.pic}"/></a>
+					<p class="mk2-con">{$vo.title}</p>
+					<p class="mk2-con2">{$vo.desc}</p>
+				</dd>
+				{/volist}
+			</dl>
+		</div>
+		{include file="common/footer" /}
+		
+	</body>
+	
+	<script type="text/javascript">
+//		$(".promk2-imgs dd img").addClass("clickimg");
+//		$(".promk2-imgs dd img").click(function(){ 
+//			
+//			$(this).toggleClass("clickimg");
+//			$(this).addClass("clickimg2");
+//		});
+		
+		$("#many").click(function(){
+			if($("#many-div").is(":hidden")){
+				$("#many-div").slideDown(1000);
+				$(this).html("收起 >>>");
+			}else{
+				
+				$("#many-div").slideUp(1000);
+				$(this).html("查看更多 >>>");
+			}
+			
+		})
+	</script>
+</html>

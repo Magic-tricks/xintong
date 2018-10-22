@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>孔子文创</title>
+	<link rel="stylesheet" type="text/css" href="__INDEX__/css/style.css"/>
+	<!--<script src="./js/jquery.js"></script>-->
+	<script type="text/javascript" src="__INDEX__/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="__INDEX__/js/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+<body>
+{include file="common/menu" /}
+<!--模块1-->
+<div class="mk1 clearfix">
+	<p class="tit1">PRODUCE   STROY</p>
+	<p class="tit2">产品<span class="bold">故事</span></p>
+	<dl class="flex mk1-imgs">
+		<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+		<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+		<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+		<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+		<dd><a href="javascript:volid(0);"><img src="__INDEX__/images/main.jpg"/></a></dd>
+	</dl>
+</div>
+<!--通栏banner-->
+<div class="main-banner">
+	<a href="javascript:volid(0);"><img src="__INDEX__/images/banner1.jpg"/></a>
+</div>
+<!--模块2-->
+
+{volist name="cateResult" id="vo"}
+<div class="mk1 clearfix">
+
+	<!--模块1-->
+	<div class="mk1 clearfix">
+
+		<p class="tit2"><span class="bold">{$vo.name}</span></p>
+
+		<dl class="flex mk2-imgs">
+			<?php if(isset($vo['image'])):
+					foreach($vo['image'] as $key => $value):
+			foreach($value as $key1 => $value1):
+			?>
+			<dd>
+				<a href="javascript:volid(0);"><img src="__UPLOADS__/<?php echo $value1['pic']; ?>"/></a>
+				<p class="mk2-con">{$vo.article.0.title}</p>
+				<p class="mk2-con2">{$vo.article.0.desc}</p>
+			</dd>
+			<?php endforeach; ?>
+			<?php endforeach; ?>
+			<?php endif; ?>
+		</dl>
+	</div>
+	<!--通栏banner-->
+	<div class="main-banner">
+		<a href="javascript:volid(0);"><img src="__INDEX__/images/banner1.jpg"/></a>
+	</div>
+	{/volist}
+
+
+
+{include file="common/footer" /}
+
+</body>
+</html>

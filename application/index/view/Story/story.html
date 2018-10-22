@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>孔子文创</title>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/style.css"/>
+		<!--<script src="./js/jquery.js"></script>-->
+		<script type="text/javascript" src="__INDEX__/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="__INDEX__/js/jquery.SuperSlide.2.1.1.js"></script>
+	</head>
+	<body>
+	{include file="common/menu" /}
+		<!--模块1-->
+
+		<div class="mk1 clearfix">
+			<p class="tit1">PRODUCE   STROY</p>
+			<p class="tit2"><span class="bold">{$cateGory.0.name}</span></p>
+
+			<?php for($i=1;$i<=$count;$i++): ?>
+			{volist name="artRes" id="artRes"}
+			<?php if($i % 2 ==1): ?>
+			<div class="story-box clearfix">
+				<div class="story-img">
+
+					<img src="__UPLOADS__/{$artRes.pic.pic}"/>
+
+				</div>
+				<div class="story-main">
+					<p class="sty-tit">{$artRes.title}</p>
+					<p class="sty-con">{$artRes.content}</p>
+				</div>
+			</div>
+			<?php endif;?>
+			<?php if($i % 2 ==0): ?>
+			<div class="story-box">
+				<div class="story-main2">
+					<p class="sty-tit">{$artRes.title}</p>
+					<p class="sty-con">{$artRes.content}</p>
+				</div>
+				<div class="story-img2">
+					<img src="__UPLOADS__/{$artRes.pic.pic}"/>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+	{/volist}
+	<?php endfor; ?>
+
+
+	{include file="common/footer" /}
+		
+	</body>
+</html>
